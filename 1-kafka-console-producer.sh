@@ -48,7 +48,7 @@ kafka-console-producer.sh --producer.config playground.config --bootstrap-server
 
 kafka-topics.sh --bootstrap-server localhost:9092 --topic first_topic --create --partitions 1
 
-# producing
+# producing acks=1 (default)
 kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic 
 > Hello World
 >My name is Conduktor
@@ -56,7 +56,7 @@ kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic
 >^C  (<- Ctrl + C is used to exit the producer)
 
 
-# producing with properties
+# producing with properties acks=all setting
 kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --producer-property acks=all
 > some message that is acked
 > just for fun
