@@ -31,10 +31,10 @@ kafka-topics.sh --bootstrap-server localhost:9092 --topic third_topic --create -
 # start one consumer - group my-first-application으로 시작 
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
 
-# start one producer and start producing
+# start one producer and start producing - RoundRobinPartitioner를 사용하여 메시지를 여러 파티션으로 랜덤하게 분산
 kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic third_topic
 
-# start another consumer part of the same group. See messages being spread
+# start another consumer part of the same group. See messages being spread - producer로부터 메시지를 여러 consumer로 분산 / 파티션의 개수보다 많은 consumer가 있을 경우, 일부 consumer는 메시지를 받지 못함
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
 
 # start another consumer part of a different group from beginning
