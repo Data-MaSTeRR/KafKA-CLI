@@ -28,7 +28,7 @@ kafka-console-consumer.sh --consumer.config playground.config --bootstrap-server
 # create a topic with 3 partitions
 kafka-topics.sh --bootstrap-server localhost:9092 --topic third_topic --create --partitions 3
 
-# start one consumer
+# start one consumer - group my-first-application으로 시작 
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
 
 # start one producer and start producing
