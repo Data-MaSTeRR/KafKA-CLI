@@ -31,13 +31,13 @@ kafka-console-consumer.sh --consumer.config playground.config --bootstrap-server
 # create a topic with 3 partitions
 kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --create --partitions 3
 
-# consuming
+# consuming - 아래 producer와 함께 실행
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic
 
 # other terminal - producing with RoundRobinPartitioner(null key)
 kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic second_topic
 
-# consuming from beginning
+# consuming from beginning - consumer 종료하더라도 다시 실행하면 처음부터 읽음 (종료 전, 파티션 간 순서를 보장하지 않음. 파티션 내 순서는 보장!)
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic --from-beginning
 
 # display key, values and timestamp in consumer
