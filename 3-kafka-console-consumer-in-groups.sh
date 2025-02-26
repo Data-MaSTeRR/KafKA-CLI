@@ -37,5 +37,5 @@ kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property 
 # start another consumer part of the same group. See messages being spread - producer로부터 메시지를 여러 consumer로 분산 / 파티션의 개수보다 많은 consumer가 있을 경우, 일부 consumer는 메시지를 받지 못함
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
 
-# start another consumer part of a different group from beginning
+# start another consumer part of a different group from beginning - 새로운 Consumer Group이면 OFFSET=0, 즉 --from-beginning 동작 / 기존 Consumer Group의 OFFSET 이후부터 메시지를 받음
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-second-application --from-beginning
