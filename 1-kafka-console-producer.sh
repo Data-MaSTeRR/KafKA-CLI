@@ -86,7 +86,7 @@ kafka-topics.sh --bootstrap-server localhost:9092 --topic new_topic_2 --describe
 # overall, please create topics with the appropriate number of partitions before producing to them!
 
 
-# produce with keys
+# produce with keys - not null key, key-value pair is required
 kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --property parse.key=true --property key.separator=:
 >example key:example value
 >name:Stephane
