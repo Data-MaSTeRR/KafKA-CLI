@@ -40,5 +40,5 @@ kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property 
 # consuming from beginning - consumer 종료하더라도 다시 실행하면 처음부터 읽음 (종료 전, 파티션 간 순서를 보장하지 않음. 파티션 내 순서는 보장!)
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic --from-beginning
 
-# display key, values and timestamp in consumer
+# display key, values and timestamp in consumer - key, value, timestamp, partition 출력
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
