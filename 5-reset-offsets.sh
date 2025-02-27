@@ -42,14 +42,14 @@ kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my
 # Dry Run: reset the offsets to the beginning of each partition
 kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group my-first-application --reset-offsets --to-earliest --topic third_topic --dry-run
 
-# execute flag is needed
+# execute flag is needed - 위 Dry Run과 세트
 kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group my-first-application --reset-offsets --to-earliest --topic third_topic --execute
 
-# describe the consumer group again
+# describe the consumer group again - OFFSET이 0으로 초기화된 것을 확인
 kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-first-application
 
-# consume from where the offsets have been reset
+# consume from where the offsets have been reset - 처음부터 메시지를 받음
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
 
-# describe the group again
+# describe the group again - OFFEST의 LAG가 0인 것을 확인
 kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-first-application
